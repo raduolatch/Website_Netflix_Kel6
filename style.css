@@ -9,3 +9,16 @@ body {
     background-color: #141414;
     color: white;
 }
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 4%;
+    z-index: 100;
+    background-color: transparent; 
+    transition: background-color 0.4s ease-in-out;
+}
