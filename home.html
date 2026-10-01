@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netpliks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: {
+                colors: { brand: { DEFAULT: "#e50914", dark: "#b20710" } },
+                fontFamily: { sans: ["Poppins", "Helvetica Neue", "Arial", "sans-serif"] }
+            } }
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="Letter_N-removebg-preview.png">
+
+    <style>html.cek-login { visibility: hidden; }</style>
+    <script>document.documentElement.classList.add("cek-login");</script>
+</head>
+<body class="bg-[#141414] font-sans text-white antialiased">
+
+    <nav id="navbar" aria-label="Utama"
+        class="fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-between gap-4 bg-gradient-to-b from-black/85 to-transparent px-4 transition-colors duration-300 data-[solid=true]:bg-[#141414] data-[solid=true]:bg-none sm:h-[72px] sm:px-10 lg:px-14">
+        <div class="flex items-center gap-4">
+            <img class="h-6 w-auto sm:h-7" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="logo netplik">
+            <ul class="hidden list-none items-center gap-5 p-0 text-sm text-white/80 md:flex">
+                <li><a href="#" class="font-medium text-white">Home</a></li>
+                <li><a href="#" class="transition hover:text-white">TV Shows</a></li>
+                <li><a href="#" class="transition hover:text-white">Movies</a></li>
+                <li><a href="#" class="transition hover:text-white">New &amp; Popular</a></li>
+                <li><a href="#" class="transition hover:text-white">My List</a></li>
+            </ul>
+        </div>
+        <div class="flex items-center gap-4 text-sm sm:gap-5">
+            <form action="mentenans.html" method="GET" role="search"
+                class="group flex items-center rounded border border-transparent focus-within:border-white/60 focus-within:bg-black/80 hover:border-white/60 hover:bg-black/80">
+                <input type="text" name="search" placeholder="Cari film..." aria-label="Cari film" required
+                    class="w-0 bg-transparent p-0 text-sm placeholder-white/50 transition-all duration-200 group-focus-within:w-36 group-focus-within:py-1.5 group-focus-within:pl-2 group-hover:w-36 group-hover:py-1.5 group-hover:pl-2 sm:group-focus-within:w-56 sm:group-hover:w-56">
+                <button type="submit" class="p-1.5 text-lg leading-none" aria-label="Cari">🔍</button>
+            </form>
+            <span class="hidden sm:block">Kids</span>
+            <span class="text-lg leading-none" aria-hidden="true">🔔</span>
+            <img id="avatar" class="h-8 w-8 cursor-pointer rounded object-cover" title="Klik untuk keluar"
+                src="https://i.pinimg.com/736x/24/a5/4c/24a54c075ae7a7e7ae16d69e2766cefe.jpg" alt="Foto Pengguna">
+        </div>
+    </nav>
+    <div class="relative flex min-h-[78vh] items-end bg-[#0b0b0b] bg-[url('netflix-background-image.jpg')] bg-cover bg-center px-4 pb-16 pt-32 sm:min-h-[88vh] sm:items-center sm:px-10 sm:pb-16 sm:pt-24 lg:px-14">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#141414] from-5% via-black/55 to-black/70 sm:hidden"></div>
+        <div class="absolute inset-0 hidden bg-gradient-to-t from-[#141414] via-transparent via-35% to-transparent sm:block"></div>
+        <div class="absolute inset-0 hidden bg-gradient-to-r from-black/85 via-black/45 via-50% to-transparent sm:block"></div>
+        <h1 class="relative z-10 max-w-2xl text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl">
+            Unlimited movies, TV shows, and more.
+        </h1>
+    </div>
+    <div id="rows" class="relative z-10 -mt-10 flex flex-col gap-8 pb-16 sm:-mt-20 sm:gap-10"></div>
+    <script>
+    (() => {
+        const KEY = "netplik_user";
+        const toLogin = () => window.location.replace("index.html");
+        let user = null;
+        try { user = JSON.parse(localStorage.getItem(KEY) || sessionStorage.getItem(KEY)); } catch {}
+        if (!user) return toLogin();
+        document.documentElement.classList.remove("cek-login");
+
+        const nav = document.getElementById("navbar");
+        const onScroll = () => { nav.dataset.solid = window.scrollY > 40; };
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+
+        const ROWS = [
+            ["Trending Sekarang", [["Midnight Run","Thriller","m1"],["Neon Harbor","Sci-Fi","m2"],["The Last Ember","Drama","m3"],["Paper Kingdom","Animasi","m4"],["Salt & Static","Misteri","m5"],["Glass Orchard","Romansa","m6"],["Iron Tide","Aksi","m7"],["Quiet Hours","Drama","m8"]]],
+            ["Baru Ditambahkan", [["Red Lantern","Kriminal","n1"],["Moonlit Road","Petualangan","n2"],["Echo Valley","Horor","n3"],["Sunday Fire","Komedi","n4"],["Deep Signal","Sci-Fi","n5"],["Harbor Lights","Drama","n6"],["Cold Orbit","Sci-Fi","n7"],["Tiny Giants","Keluarga","n8"]]],
+            ["Series Populer", [["Kota Kedua","Series","s1"],["Rumah Kaca","Series","s2"],["Bayang Malam","Series","s3"],["Jejak Api","Series","s4"],["Lorong Waktu","Series","s5"],["Garis Tipis","Series","s6"],["Pasar Senja","Series","s7"],["Langit Abu","Series","s8"]]]
+        ];
+        const root = document.getElementById("rows");
+        ROWS.forEach(([title, items]) => {
+            const sec = document.createElement("section");
+            const h2 = document.createElement("h2");
+            h2.className = "px-4 text-lg font-semibold sm:px-10 sm:text-xl lg:px-14";
+            h2.textContent = title;
+            const track = document.createElement("div");
+            track.className = "flex snap-x snap-proximity gap-3 overflow-x-auto px-4 pb-6 pt-2 [scrollbar-width:none] sm:gap-4 sm:px-10 lg:px-14 [&::-webkit-scrollbar]:hidden";
+            items.forEach(([name, genre, seed]) => {
+                const a = document.createElement("a");
+                a.href = "#";
+                a.className = "relative aspect-[2/3] w-[9.5rem] shrink-0 snap-start overflow-hidden rounded-lg bg-neutral-800 shadow-xl shadow-black/50 transition duration-200 hover:z-10 hover:scale-105 focus-visible:z-10 focus-visible:scale-105 sm:w-48 lg:w-[13.5rem]";
+                a.setAttribute("aria-label", name);
+                a.addEventListener("click", (e) => e.preventDefault());
+                const img = document.createElement("img");
+                img.src = `https://picsum.photos/seed/${seed}/400/600`;
+                img.alt = ""; img.loading = "lazy";
+                img.className = "h-full w-full object-cover";
+                const meta = document.createElement("div");
+                meta.className = "absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-3";
+                const b = document.createElement("b");
+                b.className = "block text-sm"; b.textContent = name;
+                const sp = document.createElement("span");
+                sp.className = "text-xs text-white/70"; sp.textContent = genre;
+                meta.append(b, sp); a.append(img, meta); track.append(a);
+            });
+            sec.append(h2, track); root.append(sec);
+        });
+        const avatar = document.getElementById("avatar");
+        avatar.title = user.email + " (klik untuk keluar)";
+        avatar.addEventListener("click", () => {
+            if (!confirm("Keluar dari Netplik?")) return;
+            try { localStorage.removeItem(KEY); sessionStorage.removeItem(KEY); } catch {}
+            toLogin();
+        });
+    })();
+    </script>
+</body>
+</html>
