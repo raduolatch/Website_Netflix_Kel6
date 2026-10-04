@@ -29,6 +29,29 @@ input:focus-visible, button:focus-visible, a:focus-visible {
     background: rgba(0, 0, 0, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
+/* Custom Backdrop Dimmer Biar Feathering-nya Mulus & Gak Kasar */
+.backdrop-dimmer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -10;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    
+    /* Warna Gelap + Blur (Bisa lo atur rgba-nya di sini biar gak kegelapan) */
+    background-color: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    /* Gradient Mask: 0% -> 10% gradual masuk, 90% -> 100% gradual keluar */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+/* Pas Card Di-hover, Backdrop-nya Buka */
+.group\/card:hover .backdrop-dimmer {
+    opacity: 1;
+}
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; scroll-behavior: auto !important; }
 }
