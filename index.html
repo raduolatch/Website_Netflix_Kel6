@@ -377,27 +377,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Accordion QeNA Logic
         document.addEventListener("click", (e) => {
-            const toggle = e.target.closest(".faq-toggle");
-            if (!toggle) return;
 
-            const currentItem = toggle.closest(".faq-item");
-            const currentWrapper = currentItem.querySelector(".faq-wrapper");
-            const currentIcon = currentItem.querySelector(".faq-icon");
-
-            const isOpen = currentWrapper.classList.contains("grid-rows-[1fr]");
-
-            // Exclusive Accordion QeNA
-            document.querySelectorAll(".faq-item").forEach(item => {
-                const wrapper = item.querySelector(".faq-wrapper");
-                const icon = item.querySelector(".faq-icon");
-                if (wrapper) {
-                    wrapper.classList.remove("grid-rows-[1fr]");
-                    wrapper.classList.add("grid-rows-[0fr]");
-                }
-                if (icon) {
-                    icon.classList.remove("rotate-180");
-                }
-            });
+            const card = e.target.closest(".group\\/card") || e.target.closest(".play-btn");
+            if (!card) return;
+        
+            e.preventDefault();
+      
+            const loginSection = document.getElementById("login");
+            if (loginSection) {
+                loginSection.scrollIntoView({ behavior: "smooth" });
+            }
+          
+            const switchBtn = document.getElementById("switch-mode");
+            const authTitle = document.getElementById("auth-title");
+            
+            if (authTitle && authTitle.textContent.trim() === "Sign In" && switchBtn) {
+                switchBtn.click();
+            }
+          
+            setTimeout(() => {
+                const emailInput = document.getElementById("login-email");
+                if (emailInput) emailInput.focus();
+            }, 400); // Delay dikit nunggu scroll animasi selesai
 
             // QeNA Logic Current item
             if (!isOpen) {
