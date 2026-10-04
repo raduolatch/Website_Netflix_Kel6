@@ -243,66 +243,98 @@
       
       <!-- FAQ Item 1 -->
       <div class="faq-item border border-white/10 rounded-lg overflow-hidden bg-[#1e1e1e]/60 backdrop-blur">
-        <button type="button" class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-lg font-semibold hover:bg-white/5 transition duration-200">
-          <span>Apa itu Netplik?</span>
+        <button type="button" class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-lg font-semibold hover:bg-white/5 transition-all duration-300 group">
+          <!-- Efek Skewed pas Hover ada di class span di bawah -->
+          <span class="transition-transform duration-300 group-hover:-skew-x-6 group-hover:translate-x-1 group-hover:text-brand">
+            Apa itu Netplik?
+          </span>
           <svg class="faq-icon w-6 h-6 transform transition-transform duration-300 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div class="faq-content hidden px-6 pb-5 text-gray-300 text-sm sm:text-base leading-relaxed border-t border-white/5 pt-3">
-          Netplik adalah layanan streaming berbasis langganan yang memungkinkan pengguna menonton film, serial TV, dan dokumenter tanpa gangguan iklan di perangkat terhubung internet.
+        <!-- Container animasi turun pake CSS Grid -->
+        <div class="faq-wrapper grid grid-rows-[0fr] transition-all duration-300 ease-in-out">
+          <div class="overflow-hidden">
+            <div class="faq-content px-6 pb-5 text-gray-300 text-sm sm:text-base leading-relaxed border-t border-white/5 pt-3">
+              Netplik adalah layanan streaming berbasis langganan yang memungkinkan pengguna menonton film, serial TV, dan dokumenter tanpa gangguan iklan di perangkat terhubung internet.
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- FAQ Item 2 -->
       <div class="faq-item border border-white/10 rounded-lg overflow-hidden bg-[#1e1e1e]/60 backdrop-blur">
-        <button type="button" class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-lg font-semibold hover:bg-white/5 transition duration-200">
-          <span>Berapa biaya berlangganan Netplik?</span>
+        <button type="button" class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-lg font-semibold hover:bg-white/5 transition-all duration-300 group">
+          <span class="transition-transform duration-300 group-hover:-skew-x-6 group-hover:translate-x-1 group-hover:text-brand">
+            Berapa biaya berlangganan Netplik?
+          </span>
           <svg class="faq-icon w-6 h-6 transform transition-transform duration-300 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div class="faq-content hidden px-6 pb-5 text-gray-300 text-sm sm:text-base leading-relaxed border-t border-white/5 pt-3">
-          Paket langganan Netplik dimulai dari Rp50.000 per bulan. Tanpa biaya tambahan atau kontrak terikat, Anda dapat membatalkan atau mengubah paket kapan saja.
+        <div class="faq-wrapper grid grid-rows-[0fr] transition-all duration-300 ease-in-out">
+          <div class="overflow-hidden">
+            <div class="faq-content px-6 pb-5 text-gray-300 text-sm sm:text-base leading-relaxed border-t border-white/5 pt-3">
+              Paket langganan Netplik dimulai dari Rp50.000 per bulan. Tanpa biaya tambahan atau kontrak terikat, Anda dapat membatalkan atau mengubah paket kapan saja.
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- FAQ Item 3 -->
       <div class="faq-item border border-white/10 rounded-lg overflow-hidden bg-[#1e1e1e]/60 backdrop-blur">
-        <button type="button" class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-lg font-semibold hover:bg-white/5 transition duration-200">
-          <span>Di mana saja saya bisa menonton Netplik?</span>
+        <button type="button" class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-lg font-semibold hover:bg-white/5 transition-all duration-300 group">
+          <span class="transition-transform duration-300 group-hover:-skew-x-6 group-hover:translate-x-1 group-hover:text-brand">
+            Di mana saja saya bisa menonton Netplik?
+          </span>
           <svg class="faq-icon w-6 h-6 transform transition-transform duration-300 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div class="faq-content hidden px-6 pb-5 text-gray-300 text-sm sm:text-base leading-relaxed border-t border-white/5 pt-3">
-          Anda dapat menonton kapan saja dan di mana saja melalui berbagai perangkat seperti Smart TV, smartphone, tablet, laptop, hingga konsol game selama terhubung dengan jaringan internet.
+        <div class="faq-wrapper grid grid-rows-[0fr] transition-all duration-300 ease-in-out">
+          <div class="overflow-hidden">
+            <div class="faq-content px-6 pb-5 text-gray-300 text-sm sm:text-base leading-relaxed border-t border-white/5 pt-3">
+              Anda dapat menonton kapan saja dan di mana saja melalui berbagai perangkat seperti Smart TV, smartphone, tablet, laptop, hingga konsol game selama terhubung dengan jaringan internet.
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- FAQ Item 4 -->
       <div class="faq-item border border-white/10 rounded-lg overflow-hidden bg-[#1e1e1e]/60 backdrop-blur">
-        <button type="button" class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-lg font-semibold hover:bg-white/5 transition duration-200">
-          <span>Bagaimana cara membatalkan langganan?</span>
+        <button type="button" class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-lg font-semibold hover:bg-white/5 transition-all duration-300 group">
+          <span class="transition-transform duration-300 group-hover:-skew-x-6 group-hover:translate-x-1 group-hover:text-brand">
+            Bagaimana cara membatalkan langganan?
+          </span>
           <svg class="faq-icon w-6 h-6 transform transition-transform duration-300 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div class="faq-content hidden px-6 pb-5 text-gray-300 text-sm sm:text-base leading-relaxed border-t border-white/5 pt-3">
-          Fleksibilitas penuh di tangan Anda. Pembatalan dapat dilakukan secara online melalui halaman Akun hanya dengan dua klik tanpa biaya pembatalan.
+        <div class="faq-wrapper grid grid-rows-[0fr] transition-all duration-300 ease-in-out">
+          <div class="overflow-hidden">
+            <div class="faq-content px-6 pb-5 text-gray-300 text-sm sm:text-base leading-relaxed border-t border-white/5 pt-3">
+              Fleksibilitas penuh di tangan Anda. Pembatalan dapat dilakukan secara online melalui halaman Akun hanya dengan dua klik tanpa biaya pembatalan.
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- FAQ Item 5 -->
       <div class="faq-item border border-white/10 rounded-lg overflow-hidden bg-[#1e1e1e]/60 backdrop-blur">
-        <button type="button" class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-lg font-semibold hover:bg-white/5 transition duration-200">
-          <span>Apakah konten bisa diunduh untuk ditonton offline?</span>
+        <button type="button" class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-lg font-semibold hover:bg-white/5 transition-all duration-300 group">
+          <span class="transition-transform duration-300 group-hover:-skew-x-6 group-hover:translate-x-1 group-hover:text-brand">
+            Apakah konten bisa diunduh untuk ditonton offline?
+          </span>
           <svg class="faq-icon w-6 h-6 transform transition-transform duration-300 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div class="faq-content hidden px-6 pb-5 text-gray-300 text-sm sm:text-base leading-relaxed border-t border-white/5 pt-3">
-          Ya, fitur unduh tersedia pada aplikasi seluler (iOS dan Android) untuk menyimpan tayangan favorit dan menghemat kuota internet Anda saat dalam perjalanan.
+        <div class="faq-wrapper grid grid-rows-[0fr] transition-all duration-300 ease-in-out">
+          <div class="overflow-hidden">
+            <div class="faq-content px-6 pb-5 text-gray-300 text-sm sm:text-base leading-relaxed border-t border-white/5 pt-3">
+              Ya, fitur unduh tersedia pada aplikasi seluler (iOS dan Android) untuk menyimpan tayangan favorit dan menghemat kuota internet Anda saat dalam perjalanan.
+            </div>
+          </div>
         </div>
       </div>
 
@@ -319,7 +351,7 @@
 <script>
     // KODE ANIMASI SCROLL REVEAL
 document.addEventListener("DOMContentLoaded", () => {
-        // 1. Scroll Reveal
+        // 1. Intersection Observer untuk Scroll Reveal
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -335,22 +367,35 @@ document.addEventListener("DOMContentLoaded", () => {
         const sections = document.querySelectorAll(".reveal-section");
         sections.forEach(sec => observer.observe(sec));
 
-        // 2. FAQ Accordion Handler (Direct & Bulletproof)
+        // 2. Logika Accordion: Slide Down + Single Open Mode
         document.addEventListener("click", (e) => {
             const toggle = e.target.closest(".faq-toggle");
             if (!toggle) return;
 
-            const item = toggle.closest(".faq-item");
-            if (!item) return;
+            const currentItem = toggle.closest(".faq-item");
+            const currentWrapper = currentItem.querySelector(".faq-wrapper");
+            const currentIcon = currentItem.querySelector(".faq-icon");
 
-            const content = item.querySelector(".faq-content");
-            const icon = item.querySelector(".faq-icon");
+            const isOpen = currentWrapper.classList.contains("grid-rows-[1fr]");
 
-            if (content) {
-                content.classList.toggle("hidden");
-            }
-            if (icon) {
-                icon.classList.toggle("rotate-180");
+            // TUTUP SEMUA ITEM LAIN DULUAN (Exclusive Accordion)
+            document.querySelectorAll(".faq-item").forEach(item => {
+                const wrapper = item.querySelector(".faq-wrapper");
+                const icon = item.querySelector(".faq-icon");
+                if (wrapper) {
+                    wrapper.classList.remove("grid-rows-[1fr]");
+                    wrapper.classList.add("grid-rows-[0fr]");
+                }
+                if (icon) {
+                    icon.classList.remove("rotate-180");
+                }
+            });
+
+            // KALAU ITEM YANG DIKLIK TADINYA NUTUP, SEKARANG BUKA
+            if (!isOpen) {
+                currentWrapper.classList.remove("grid-rows-[0fr]");
+                currentWrapper.classList.add("grid-rows-[1fr]");
+                currentIcon.classList.add("rotate-180");
             }
         });
     });
