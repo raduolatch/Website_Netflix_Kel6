@@ -244,7 +244,7 @@
       <!-- FAQ Item 1 -->
       <div class="faq-item border border-white/10 rounded-lg overflow-hidden bg-[#1e1e1e]/60 backdrop-blur">
         <button type="button" class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-lg font-semibold hover:bg-white/5 transition-all duration-300 group">
-          <!-- Efek Skewed pas Hover ada di class span di bawah -->
+          <!-- Font Skewed effect -->
           <span class="transition-transform duration-300 group-hover:-skew-x-6 group-hover:translate-x-1 group-hover:text-brand">
             Apa itu Netplik?
           </span>
@@ -252,7 +252,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <!-- Container animasi turun pake CSS Grid -->
+        <!-- Container animation Slide Down -->
         <div class="faq-wrapper grid grid-rows-[0fr] transition-all duration-300 ease-in-out">
           <div class="overflow-hidden">
             <div class="faq-content px-6 pb-5 text-gray-300 text-sm sm:text-base leading-relaxed border-t border-white/5 pt-3">
@@ -351,7 +351,6 @@
 <script>
     // KODE ANIMASI SCROLL REVEAL
 document.addEventListener("DOMContentLoaded", () => {
-        // 1. Intersection Observer untuk Scroll Reveal
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -367,7 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const sections = document.querySelectorAll(".reveal-section");
         sections.forEach(sec => observer.observe(sec));
 
-        // 2. Logika Accordion: Slide Down + Single Open Mode
+        // Accordion QeNA Logic
         document.addEventListener("click", (e) => {
             const toggle = e.target.closest(".faq-toggle");
             if (!toggle) return;
@@ -378,7 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const isOpen = currentWrapper.classList.contains("grid-rows-[1fr]");
 
-            // TUTUP SEMUA ITEM LAIN DULUAN (Exclusive Accordion)
+            // Exclusive Accordion QeNA
             document.querySelectorAll(".faq-item").forEach(item => {
                 const wrapper = item.querySelector(".faq-wrapper");
                 const icon = item.querySelector(".faq-icon");
@@ -391,7 +390,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            // KALAU ITEM YANG DIKLIK TADINYA NUTUP, SEKARANG BUKA
+            // QeNA Logic Current item
             if (!isOpen) {
                 currentWrapper.classList.remove("grid-rows-[0fr]");
                 currentWrapper.classList.add("grid-rows-[1fr]");
