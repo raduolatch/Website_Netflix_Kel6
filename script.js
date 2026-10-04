@@ -213,5 +213,70 @@
     $("logout-btn").addEventListener("click", logout);
     setUser(getUser());
 
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Observer Scroll Reveal (Bawaan lo)
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    });
 
-})();
+    const sections = document.querySelectorAll(".reveal-section");
+    sections.forEach(sec => observer.observe(sec));
+
+    // 2. FAQ Accordion Handler (Tambahan)
+    document.querySelectorAll('.faq-toggle').forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const content = toggle.nextElementSibling;
+            const icon = toggle.querySelector('.faq-icon');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        });
+    });
+});
+
+const faqToggles = document.querySelectorAll('.faq-toggle');
+    faqToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const content = toggle.nextElementSibling;
+            const icon = toggle.querySelector('.faq-icon');
+            if (content) content.classList.toggle('hidden');
+            if (icon) icon.classList.toggle('rotate-180');
+        });
+    });
+
+
+    document.addEventListener("click", (e) => { 
+        const pm = $("profile-menu");
+        if (pm && !e.target.closest("#profile-menu")) pm.classList.add("hidden"); 
+    });
+    
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenus(); });
+    
+    if ($("logout-btn")) {
+        $("logout-btn").addEventListener("click", logout);
+    }
+
+    if ($("landing-view") && $("app-view")) {
+        setUser(getUser());
+    }
+
+// FAQ Accordion Handler 
+    document.addEventListener("click", (e) => {
+        const toggle = e.target.closest(".faq-toggle");
+        if (!toggle) return;
+
+        const content = toggle.nextElementSibling;
+        const icon = toggle.querySelector(".faq-icon");
+
+        if (content) content.classList.toggle("hidden");
+        if (icon) icon.classList.toggle("rotate-180");
+    });
+
+})(); 
