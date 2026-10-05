@@ -355,10 +355,23 @@
 <!-- Section footer -->
 <footer class="bg-red-700 border-t border-gray-300/20 px-4 py-7 text-sm text-white/60 sm:px-10 lg:px-14">
   <p class="text-1xl text-white md:text-1xl text-center mb-7 ">Ready to watch? Enter your email to create or restart your membership.</p>
-  <div class="flex items-center gap-3 max-w-3xl mx-auto">
-    <input type="email" placeholder="Email Address" aria-label="Email Address" class="border border-white/40 rounded-2xl px-5 py-3 flex-1 min-w-0 text-white text-base sm:text-xl placeholder-white/70 outline-none">
-    <button type="button" class="bg-gradient-to-r from-purple-600 to-red-500 text-white font-bold px-3 sm:px-5 py-3 border rounded-2xl text-base sm:text-xl flex items-center justify-center gap-2 sm:gap-5 whitespace-nowrap shrink-0 hover:opacity-90 transition">Get Started
-      <span class="text-2xl sm:text-4xl font-light leading-none">&gt;</span>
+  <div class="flex flex-col sm:flex-row items-stretch gap-3 max-w-3xl mx-auto">
+  <input type="email" placeholder="Email Address"
+    class="min-w-0 w-full flex-1 border border-white/40 bg-transparent rounded-2xl px-4 py-3 text-base sm:text-xl text-white placeholder-gray-300 outline-none">
+  <button type="button"
+    class="bg-gradient-to-r from-purple-600 to-red-500 text-white font-bold px-5 py-3 rounded-2xl text-base sm:text-xl flex items-center justify-center gap-3 whitespace-nowrap hover:opacity-90 transition">
+    Get Started
+    <span class="text-3xl sm:text-4xl font-light leading-none">&gt;</span>
+  </button>
+</div>
+  <p class="text-1xl text-white md:text-1xl text-center mb-7 ">Ready to watch? Enter your email to create or restart your membership.</p>
+  <div class="flex flex-col sm:flex-row items-stretch gap-3 max-w-3xl mx-auto">
+    <input type="email" placeholder="Email Address"
+      class="min-w-0 w-full flex-1 border border-white/40 bg-transparent rounded-2xl px-4 py-3 text-base sm:text-xl text-white placeholder-gray-300 outline-none">
+    <button type="button"
+      class="bg-gradient-to-r from-purple-600 to-red-500 text-white font-bold px-5 py-3 rounded-2xl text-base sm:text-xl flex items-center justify-center gap-3 whitespace-nowrap hover:opacity-90 transition">
+      Get Started
+      <span class="text-3xl sm:text-4xl font-light leading-none">&gt;</span>
     </button>
   </div>
   <p class="mt-6 text-white text-1xl ">Questions? Call 021-123-456-7890</p>
@@ -409,73 +422,54 @@
 </footer>
 
 <script>
-    // KODE ANIMASI SCROLL REVEAL
 document.addEventListener("DOMContentLoaded", () => {
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("is-visible");
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                obs.unobserve(entry.target);
+            }
         });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+    document.querySelectorAll(".reveal-section").forEach(sec => observer.observe(sec));
 
-        const sections = document.querySelectorAll(".reveal-section");
-        sections.forEach(sec => observer.observe(sec));
+    // FAQ accordion
+    document.querySelectorAll(".faq-toggle").forEach(toggle => {
+        toggle.addEventListener("click", () => {
+            const wrapper = toggle.nextElementSibling;
+            const icon = toggle.querySelector(".faq-icon");
+            const isOpen = wrapper.classList.contains("grid-rows-[1fr]");
 
-        // Accordion QeNA Logic
-        document.addEventListener("click", (e) => {
+            document.querySelectorAll(".faq-wrapper").forEach(w => {
+                w.classList.remove("grid-rows-[1fr]");
+                w.classList.add("grid-rows-[0fr]");
+            });
+            document.querySelectorAll(".faq-icon").forEach(i => i.classList.remove("rotate-180"));
 
-            const card = e.target.closest(".group\\/card") || e.target.closest(".play-btn");
-            if (!card) return;
-        
-            e.preventDefault();
-      
-            const loginSection = document.getElementById("login");
-            if (loginSection) {
-                loginSection.scrollIntoView({ behavior: "smooth" });
-            }
-          
-            const switchBtn = document.getElementById("switch-mode");
-            const authTitle = document.getElementById("auth-title");
-            
-            if (authTitle && authTitle.textContent.trim() === "Sign In" && switchBtn) {
-                switchBtn.click();
-            }
-          
-            setTimeout(() => {
-                const emailInput = document.getElementById("login-email");
-                if (emailInput) emailInput.focus();
-            }, 400); // Delay dikit nunggu scroll animasi selesai
-
-            // QeNA Logic Current item
             if (!isOpen) {
-                currentWrapper.classList.remove("grid-rows-[0fr]");
-                currentWrapper.classList.add("grid-rows-[1fr]");
-                currentIcon.classList.add("rotate-180");
+                wrapper.classList.remove("grid-rows-[0fr]");
+                wrapper.classList.add("grid-rows-[1fr]");
+                icon.classList.add("rotate-180");
             }
         });
     });
-    
-    
+
+    // Klik poster film -> arahkan ke form login/daftar
+    document.addEventListener("click", (e) => {
+        const card = e.target.closest(".group\\/card");
+        if (!card) return;
+        e.preventDefault();
+        document.getElementById("login")?.scrollIntoView({ behavior: "smooth" });
+        const authTitle = document.getElementById("auth-title");
+        if (authTitle && authTitle.textContent.trim() === "Sign In") {
+            document.getElementById("switch-mode")?.click();
+        }
+        setTimeout(() => document.getElementById("login-email")?.focus(), 400);
+    });
+});
 </script>
 
 <script src="script.js"></script>
-<script>
-window.addEventListener("load", () => {
-  const vw = document.body.clientWidth;
-  const out = [];
-  document.querySelectorAll("body *").forEach((el) => {
-    if (el.closest("#movie-track") && el.id !== "movie-track") return;
-    if (getComputedStyle(el).position === "fixed") return;
-    const r = el.getBoundingClientRect();
-    if (r.right > vw + 1) out.push(el.tagName + (el.id ? "#" + el.id : "") + " ." + String(el.className).slice(0, 40) + " → " + Math.round(r.right));
-  });
-  alert("lebar body: " + vw + "\n" + (out.slice(0, 6).join("\n") || "tidak ada yang meluber"));
-});
-</script>
 </body>
 </html>
