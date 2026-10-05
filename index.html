@@ -364,17 +364,6 @@
     <span class="text-3xl sm:text-4xl font-light leading-none">&gt;</span>
   </button>
 </div>
-  <p class="text-1xl text-white md:text-1xl text-center mb-7 ">Ready to watch? Enter your email to create or restart your membership.</p>
-  <div class="flex flex-col sm:flex-row items-stretch gap-3 max-w-3xl mx-auto">
-    <input type="email" placeholder="Email Address"
-      class="min-w-0 w-full flex-1 border border-white/40 bg-transparent rounded-2xl px-4 py-3 text-base sm:text-xl text-white placeholder-gray-300 outline-none">
-    <button type="button"
-      class="bg-gradient-to-r from-purple-600 to-red-500 text-white font-bold px-5 py-3 rounded-2xl text-base sm:text-xl flex items-center justify-center gap-3 whitespace-nowrap hover:opacity-90 transition">
-      Get Started
-      <span class="text-3xl sm:text-4xl font-light leading-none">&gt;</span>
-    </button>
-  </div>
-  <p class="mt-6 text-white text-1xl ">Questions? Call 021-123-456-7890</p>
 © 2026 Netplik. Semua hak dilindungi.
 
 <!-- bagian linknya footer -->
@@ -455,7 +444,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Klik poster film -> arahkan ke form login/daftar
+    // function untuk scroll ke bagian login ketika card diklik
     document.addEventListener("click", (e) => {
         const card = e.target.closest(".group\\/card");
         if (!card) return;
